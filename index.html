@@ -13,6 +13,7 @@
   window.CFG = {
     META_PIXEL_ID: "",      // ej: "123456789012345"
     TIKTOK_PIXEL_ID: "",    // ej: "C1AB2CD3EF4GH5"
+    OFERTA_FIN: "2026-11-30T23:59:00-05:00", // fecha real en que termina el 50% (hora Lima)
     HOTMART_LINK: "https://go.hotmart.com/P88772598A?ap=a65c"
   };
 </script>
@@ -63,6 +64,7 @@ h1{font-size:clamp(30px,6vw,48px)}h2{font-size:clamp(25px,4.5vw,36px);text-align
 .tst img{width:72px;height:72px;object-fit:cover;border-radius:50%;margin-bottom:10px}
 details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
 summary{font-weight:700;cursor:pointer}
+.tm{display:flex;gap:8px;justify-content:center;margin:12px 0}.tm div{background:var(--dark);color:#fff;border-radius:10px;min-width:62px;padding:8px 6px;text-align:center;font-weight:800;font-size:26px;line-height:1}.tm small{display:block;font-size:11px;font-weight:400;margin-top:4px;opacity:.85}.top .tm{margin:6px 0 0}.top .tm div{background:rgba(255,255,255,.15);font-size:20px;min-width:52px;padding:6px 4px}
 .c{text-align:center}.mt{margin-top:28px}
 .sticky{position:fixed;left:0;right:0;bottom:0;color:var(--ink);transform:translateY(110%);transition:transform .25s;background:var(--card);border-top:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:center;z-index:9}
 .sticky.on{transform:none}.sticky .btn{min-height:48px;padding:12px 18px;font-size:17px;box-shadow:none;max-width:260px;margin:0}.sticky span{font-size:14px;white-space:nowrap}
@@ -71,7 +73,7 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
 </head>
 <body>
 
-<div class="top">🎉 Oferta de lanzamiento: 50% de descuento</div>
+<div class="top">🎉 Oferta de lanzamiento: 50% de descuento <span class="tw">· termina en:</span><div class="tm tw"></div></div>
 
 <header class="w hero">
   <div>
@@ -89,6 +91,7 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
     <div class="price">
       <div class="old">Precio regular: US$97</div>
       <div class="off">50% OFF</div>
+      <p class="tw" style="margin:0;font-weight:700">La oferta termina en:</p><div class="tm tw"></div>
       <p>Precio de lanzamiento por tiempo limitado. Pagas en la moneda de tu país en el checkout seguro de Hotmart.</p>
       <a class="btn cta" href="#">Acceder con 50% de descuento<small>Pago seguro con Hotmart · Garantía de 7 días</small></a>
       <img class="mt" src="https://d1yei2z3i6k35z.cloudfront.net/11699149/6954583d6cf97_SAND_logos-tarjetas.png" alt="Medios de pago aceptados" style="max-width:320px;margin:20px auto 0">
@@ -219,6 +222,12 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
   var c=window.CFG,p=new URLSearchParams(location.search);
   var sck=p.get('sck')||p.get('utm_source')||'web';
   var url=c.HOTMART_LINK+(c.HOTMART_LINK.indexOf('?')>-1?'&':'?')+'sck='+encodeURIComponent(sck);
+  var end=new Date(c.OFERTA_FIN).getTime();
+  function tick(){var d=end-Date.now();if(!(d>0)){document.querySelectorAll('.tw').forEach(function(e){e.style.display='none'});return}
+    var h=[Math.floor(d/864e5),Math.floor(d/36e5)%24,Math.floor(d/6e4)%60,Math.floor(d/1e3)%60],l=['días','horas','min','seg'];
+    var html=h.map(function(v,i){return '<div>'+String(v).padStart(2,'0')+'<small>'+l[i]+'</small></div>'}).join('');
+    document.querySelectorAll('.tm').forEach(function(e){e.innerHTML=html})}
+  tick();setInterval(tick,1000);
   var st=document.getElementById('stk'),hb=document.querySelector('header .btn');
   addEventListener('scroll',function(){st.classList.toggle('on',hb.getBoundingClientRect().bottom<0)},{passive:true});
   document.querySelectorAll('.cta').forEach(function(a){
