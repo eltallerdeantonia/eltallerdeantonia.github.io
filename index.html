@@ -45,7 +45,8 @@ h1{font-size:clamp(30px,6vw,48px)}h2{font-size:clamp(25px,4.5vw,36px);text-align
 @media(min-width:820px){.hero{grid-template-columns:1.1fr .9fr}}
 .tag{display:inline-block;background:var(--soft);color:var(--acc);font-weight:700;font-size:14px;padding:4px 12px;border-radius:99px;margin-bottom:14px}
 .lead{color:var(--muted);font-size:19px}
-.btn{display:inline-block;background:var(--acc);color:#fff;text-decoration:none;font-weight:800;font-size:18px;padding:16px 28px;border-radius:12px;box-shadow:0 6px 0 #8a1f6c;transition:transform .1s}
+.btn{display:block;width:100%;max-width:440px;margin:0 auto;text-align:center;min-height:58px;line-height:1.3;background:var(--acc);color:#fff;text-decoration:none;font-weight:800;font-size:20px;padding:18px 24px;border-radius:14px;letter-spacing:.2px;box-shadow:0 6px 0 #8a1f6c;transition:transform .1s}
+.btn small{display:block;font-weight:400;font-size:13px;opacity:.9;margin-top:2px}.btn:hover{filter:brightness(1.08)}@keyframes pl{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}.hero .btn{animation:pl 2.2s ease-in-out infinite}@media(min-width:820px){.hero .btn{margin:0}}
 .btn:active{transform:translateY(3px);box-shadow:0 3px 0 #8a1f6c}
 .trust{font-size:14px;color:var(--muted);margin-top:12px}
 .price{background:var(--card);border:2px dashed var(--acc);border-radius:18px;padding:24px;text-align:center;max-width:520px;margin:0 auto}
@@ -63,8 +64,8 @@ h1{font-size:clamp(30px,6vw,48px)}h2{font-size:clamp(25px,4.5vw,36px);text-align
 details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
 summary{font-weight:700;cursor:pointer}
 .c{text-align:center}.mt{margin-top:28px}
-.sticky{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:center;z-index:9}
-.sticky .btn{padding:12px 20px;font-size:16px;box-shadow:none}
+.sticky{position:fixed;left:0;right:0;bottom:0;transform:translateY(110%);transition:transform .25s;background:var(--card);border-top:1px solid var(--line);padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:center;z-index:9}
+.sticky.on{transform:none}.sticky .btn{min-height:48px;padding:12px 18px;font-size:17px;box-shadow:none;max-width:260px;margin:0}.sticky span{font-size:14px;white-space:nowrap}
 footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
 </style>
 </head>
@@ -76,8 +77,8 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
   <div>
     <span class="tag">El taller de Antonia recomienda</span>
     <h1>Aprende a decorar sandalias únicas, paso a paso y desde tu celular</h1>
-    <p class="lead">El curso online de <b>Cecilia</b>: 3 técnicas de decoración (pedrería, hilo cola de ratón y macramé), cómo fotografiar tus diseños y cómo venderlos por internet. Sin experiencia previa.</p>
-    <a class="btn cta" href="#">¡Quiero empezar ahora!</a>
+    <p class="lead">El curso online de <b>Cecilia</b>: pedrería, hilo cola de ratón y macramé. Sin experiencia previa, a tu ritmo.</p>
+    <a class="btn cta" href="#">¡Quiero empezar ahora!<small>50% OFF · Acceso inmediato</small></a>
     <p class="trust">✔ Garantía de 7 días · ✔ Acceso inmediato · ✔ Desde cualquier dispositivo</p>
   </div>
   <img src="https://d1yei2z3i6k35z.cloudfront.net/11699149/6a8b80ad462b41.02832241_SAND_Portada.png" alt="Portada del curso de sandalias decoradas">
@@ -89,7 +90,7 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
       <div class="old">Precio regular: US$97</div>
       <div class="off">50% OFF</div>
       <p>Precio de lanzamiento por tiempo limitado. Pagas en la moneda de tu país en el checkout seguro de Hotmart.</p>
-      <a class="btn cta" href="#">Acceder con 50% de descuento</a>
+      <a class="btn cta" href="#">Acceder con 50% de descuento<small>Pago seguro con Hotmart · Garantía de 7 días</small></a>
       <img class="mt" src="https://d1yei2z3i6k35z.cloudfront.net/11699149/6954583d6cf97_SAND_logos-tarjetas.png" alt="Medios de pago aceptados" style="max-width:320px;margin:20px auto 0">
     </div>
   </div>
@@ -112,6 +113,7 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
       </ul>
       <img src="https://d1yei2z3i6k35z.cloudfront.net/11699149/69c02fa2102034.13622765_SAND_Mockup-2.png" alt="Vista del curso en distintos dispositivos">
     </div>
+    <p class="mt"><a class="btn cta" href="#">Quiero acceder a los 9 módulos</a></p>
   </div>
 </section>
 
@@ -142,6 +144,7 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
       <div class="card"><h3>Tu tiempo es limitado</h3>Ves las clases cuando quieras, las veces que quieras.</div>
       <div class="card"><h3>Lo digital te intimida</h3>Te enseñan a fotografiar y publicar tus diseños paso a paso.</div>
     </div>
+    <p class="mt"><a class="btn cta" href="#">Sí, este curso es para mí</a></p>
   </div>
 </section>
 
@@ -165,7 +168,7 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
       <div class="card bono"><img src="https://d1yei2z3i6k35z.cloudfront.net/11699149/69e592882ee391.41266393_Bono3-1.png" alt="Bono 3"><div><h3>Bono 3 · Comunidad y soporte</h3>Acceso al grupo privado de Telegram y a la comunidad de Facebook para resolver tus dudas.</div></div>
       <div class="card bono"><img src="https://d1yei2z3i6k35z.cloudfront.net/11699149/69e592a8acab26.22904493_Bono4-1.png" alt="Bono 4"><div><h3>Bono 4 · Certificado</h3>Al terminar, recibes un certificado que respalda tu aprendizaje.</div></div>
     </div>
-    <p class="c mt"><a class="btn cta" href="#">Quiero el curso + los 4 bonos</a></p>
+    <p class="c mt"><a class="btn cta" href="#">Quiero el curso + los 4 bonos<small>Bonos incluidos solo en el lanzamiento</small></a></p>
   </div>
 </section>
 
@@ -186,7 +189,7 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
     <div>
       <h2 style="text-align:left">Garantía de 7 días</h2>
       <p>Tienes una semana para ver el contenido. Si no es lo que esperabas, pides el reembolso total desde Hotmart, sin preguntas.</p>
-      <a class="btn cta" href="#">Empezar sin riesgo</a>
+      <a class="btn cta" href="#" style="margin:0">Empezar sin riesgo</a>
     </div>
   </div>
 </section>
@@ -209,13 +212,15 @@ footer{font-size:13px;color:var(--muted);padding:32px 0;text-align:center}
   Este producto se comercializa con el apoyo de Hotmart. La plataforma no realiza un control editorial previo de los productos ofertados ni garantiza resultados. Los resultados de cada alumna dependen de su dedicación.
 </footer>
 
-<div class="sticky"><span><b>50% OFF</b> por lanzamiento</span><a class="btn cta" href="#">Quiero el curso</a></div>
+<div class="sticky" id="stk"><span><b>50% OFF</b> por lanzamiento</span><a class="btn cta" href="#">Quiero el curso</a></div>
 
 <script>
 (function(){
   var c=window.CFG,p=new URLSearchParams(location.search);
   var sck=p.get('sck')||p.get('utm_source')||'web';
   var url=c.HOTMART_LINK+(c.HOTMART_LINK.indexOf('?')>-1?'&':'?')+'sck='+encodeURIComponent(sck);
+  var st=document.getElementById('stk'),hb=document.querySelector('header .btn');
+  addEventListener('scroll',function(){st.classList.toggle('on',hb.getBoundingClientRect().bottom<0)},{passive:true});
   document.querySelectorAll('.cta').forEach(function(a){
     a.href=url;a.target='_blank';a.rel='noopener';
     a.addEventListener('click',function(){
